@@ -13,6 +13,7 @@
       <ul class="nav navbar-nav">
         <li><a href="<?= base_url('book/book')?>">Contactos</a></li>
         <li><a href="<?= base_url('Cpersona/verLista')?>">Redactar</a></li>
+        <li><a href="<?= base_url('user/crearFirma')?>">Agregar Firma</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <br>

@@ -64,7 +64,7 @@
                           <label style="font-size: 15px; margin-left: 215px;">Mensaje</label><br />
                       </div>
                       <div class="col-md-9" style="float: right;">
-                          <textarea id="editor" name="mensaje"></textarea>
+                          <textarea id="editor" name="mensaje"> <? $this->load->view('firma'); ?></textarea>
                       </div> 
                   </div>
                   <section>
@@ -86,6 +86,8 @@
 <div style="margin-top: -600px; float: left;">    
         <?php $this->load->view("clientes"); ?>
 </div>
+
+
 <script type="text/javascript">
     function submit() {
     var form = document.getElementById('uploadform');
@@ -106,60 +108,34 @@
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function (e) {
-        $('#file').on('change', function () {
-            var file_data = $('#file').prop('files')[0];
-            var form_data = new FormData();
-            form_data.append('file', file_data);
-            $.ajax({
-                url: 'http://mail.mayordomus.cl/Cpersona/upload_file', // point to server-side controller method
-                dataType: 'text', // what to expect back from the server
-                cache: false,
-                contentType: false,
-                processData: false,
-                data: form_data,
-                type: 'post',
-                success: function (response) {
-                    $('#msg').html(response); // display success response from the server
-                },
-                error: function (response) {
-                    $('#msg').html(response); // display error response from the server
-                }
-            });
-        });
+  $(document).ready(function (e) {
+    $('#file').on('change', function () {
+      var file_data = $('#file').prop('files')[0];
+      var form_data = new FormData();
+      form_data.append('file', file_data);
+      $.ajax({
+        url: 'http://mail.mayordomus.cl/Cpersona/upload_file', // point to server-side controller method
+        dataType: 'text', // what to expect back from the server
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,
+        type: 'post',
+        success: function (response) {
+            $('#msg').html(response); // display success response from the server
+        },
+        error: function (response) {
+            $('#msg').html(response); // display error response from the server
+        }
+      });
     });
+  });
 </script>
-                 
-       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function (e) {
-                $('#upload').on('click', function () {
-                    var file_data = $('#archivo').prop('files')[0];
-                    var form_data = new FormData();
-                    form_data.append('archivo', file_data);
-                    $.ajax({
-                        url: 'http://mail.mayordomus.cl/Cpersona/cargar_archivo', // point to server-side controller method
-                        dataType: 'text', // what to expect back from the server
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        data: form_data,
-                        type: 'post',
-                        success: function (response) {
-                            $('#msg').html(response); // display success response from the server
-                        },
-                        error: function (response) {
-                            $('#msg').html(response); // display error response from the server
-                        }
-                    });
-                });
-            });
-        </script>
-    <script src="<?php echo base_url('assets/js/login.js')?>"></script>
-    <script src="<?php echo base_url();?>assets/js/jquery-1.11.3.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/clientes.js"></script>
-    <script type="text/javascript">
+<script src="<?php echo base_url('assets/js/login.js')?>"></script>
+<script src="<?php echo base_url();?>assets/js/jquery-1.11.3.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/clientes.js"></script>
+<script type="text/javascript">
 
-    </script>
+</script>
 

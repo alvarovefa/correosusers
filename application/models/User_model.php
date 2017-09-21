@@ -51,5 +51,18 @@ class User_model extends CI_Model
 		$this->db->delete($this->table);
 	}
 
+	public function firma($id){
+
+		$this->db->select('firma');
+		$this->db->where('id_usuario', $id);
+		$this->db->from('usuarios');
+		$query = $this->db->get();
+
+			if ($query->num_rows()>0) {
+				return $query->result();
+			}else{
+				echo false;
+			}
+	}
 
 }

@@ -6,7 +6,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		if ($this->session->userdata('login')){
-			redirect(site_url("Cpersona"));
+			redirect(site_url("Cpersona/verLista"));
 			}else{
 				$this->load->view('welcome_message');
 			}

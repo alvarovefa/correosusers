@@ -78,7 +78,54 @@ class User extends CI_Controller {
 		$this->User_model->delete_by_id($id);
 		echo json_encode(array("status" => TRUE));
 	}
+	public function crearFirma(){
 
+		$this->load->view('crearFirma');
+	}
+
+	public function mostrarFirma(){
+
+		$id = $this->session->userdata('id');
+
+		$data = $this->User_model->firma($id);
+	
+		$this->load->view('redactar', $data);
+
+	}
+
+	function upload_firma() {
+
+				$id = $this->session->userdata('id');
+        //upload firma
+        $config['upload_path'] = './uploads/firmas';
+        $config['allowed_types'] = '*';
+        $config['file_name'] = $id;
+        $config['max_filename'] = '255';
+        $config['encrypt_name'] = FALSE;
+        $config['max_size'] = '50000';
+        $config['overwrite'] = TRUE;
+        
+        $this->load->library('upload', $config);
+ 
+        if (isset($_FILES['file']['name'])) {
+            if (0 < $_FILES['file']['error']) {
+                echo 'Error durante la carga' . $_FILES['file']['error'];
+            } else {
+                if (file_exists('./uploads/firmas' . $_FILES['file']['name'])) {
+                    echo 'Nombre de archivo ya existe : uploads/firmas' . $_FILES['file']['name'];
+                } else {
+                    $this->load->library('upload', $config);
+                    if (!$this->upload->do_upload('file')) {
+                        echo $this->upload->display_errors();
+                    } else {
+                        echo 'Firma agregada con éxito!';
+                    }
+                }
+            }
+        } else {
+            echo 'Porfavor selecciona un archivo';
+        }
+    } 
 
 
 }
