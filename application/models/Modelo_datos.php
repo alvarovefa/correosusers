@@ -18,24 +18,6 @@ class Modelo_datos extends CI_Model {
       return $resultado;
    }
 
-	/*
-	$this->db->select("nombre");
-	$this->db->where("correo",$correo);
-	$this->db->where("pass",$pass);
-	$consulta = $this->db->get("usuarios");
-	return $consulta->result();
-	if ($consulta->num_rows() > 0) {
-
-		$this->load->view('inicio');
-	}else{
-        echo ("<script language='JavaScript'>
-        window.alert('Usuario o contraseña inválidos')
-        window.location.href='/ci_crud';
-        </script>");
-
-	}
-*/
-
 
 	public function alias($value){
 	 	$this->db->select('alias');
@@ -80,4 +62,26 @@ public function buscarContactos()
 		$consulta = $this->db->get("contactos");
 		return $consulta->result();
 	}
+
+public function historial($data){
+
+
+	$this->db->insert("historial", $data);
+
+}
+
+public function registroUsuario($value){
+
+	$this->db->select('id');
+	$this->db->where('correo', $value);
+	$query = $this->db->get('contactos');
+
+		if ($query->num_rows()>0) {
+			$result = $query->row();
+			return $result->id;
+		}else{
+			return false;
+		}
+}
+
 }

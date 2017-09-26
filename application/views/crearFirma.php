@@ -41,18 +41,18 @@
       var form_data = new FormData();
       form_data.append('file', file_data);
       $.ajax({
-        url: 'http://localhost/empresa/User/upload_firma', // point to server-side controller method
-        dataType: 'text', // what to expect back from the server
+        url: 'http://localhost/empresa/User/upload_firma', 
+        dataType: 'text',
         cache: false,
         contentType: false,
         processData: false,
         data: form_data,
         type: 'post',
         success: function (response) {
-            $('#msg').html(response); // display success response from the server
+            $('#msg').html(response);
         },
         error: function (response) {
-            $('#msg').html(response); // display error response from the server
+            $('#msg').html(response);
         }
       });
     });

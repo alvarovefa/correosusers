@@ -2211,8 +2211,8 @@ Clipboard = (function(superClass) {
   Clipboard.pluginName = 'Clipboard';
 
   Clipboard.prototype.opts = {
-    pasteImage: false,
-    cleanPaste: false
+    pasteImage: true,
+    cleanPaste: true
   };
 
   Clipboard.prototype._init = function() {
@@ -2720,7 +2720,7 @@ Simditor.i18n = {
     'color': 'Text Color',
     'coloredText': 'Colored Text',
     'hr': 'Horizontal Line',
-    'image': 'Insert Image',
+    'image': 'Agregar imagen',
     'externalImage': 'External Image',
     'uploadImage': 'Upload Image',
     'uploadFailed': 'Upload failed',

@@ -63,8 +63,9 @@
                           <input style="margin-left: 215px;" type="text" class="form-control" name="asunto" id="asunto">
                           <label style="font-size: 15px; margin-left: 215px;">Mensaje</label><br />
                       </div>
+                    
                       <div class="col-md-9" style="float: right;">
-                          <textarea id="editor" name="mensaje"> <? $this->load->view('firma'); ?></textarea>
+                          <textarea id="editor" name="mensaje"></textarea>
                       </div> 
                   </div>
                   <section>
@@ -94,9 +95,6 @@
     form.submit();
   };
 </script>
-    <script src="<?php echo base_url();?>assets/js/jquery-1.11.3.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/clientes.js"></script>
 
 <script type="text/javascript">
     var editor = new Simditor({
@@ -114,18 +112,18 @@
       var form_data = new FormData();
       form_data.append('file', file_data);
       $.ajax({
-        url: 'http://mail.mayordomus.cl/Cpersona/upload_file', // point to server-side controller method
-        dataType: 'text', // what to expect back from the server
+        url: 'http://mail.mayordomus.cl/Cpersona/upload_file', 
+        dataType: 'text', 
         cache: false,
         contentType: false,
         processData: false,
         data: form_data,
         type: 'post',
         success: function (response) {
-            $('#msg').html(response); // display success response from the server
+            $('#msg').html(response); 
         },
         error: function (response) {
-            $('#msg').html(response); // display error response from the server
+            $('#msg').html(response);
         }
       });
     });

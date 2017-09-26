@@ -78,19 +78,10 @@ class User extends CI_Controller {
 		$this->User_model->delete_by_id($id);
 		echo json_encode(array("status" => TRUE));
 	}
+	
 	public function crearFirma(){
 
 		$this->load->view('crearFirma');
-	}
-
-	public function mostrarFirma(){
-
-		$id = $this->session->userdata('id');
-
-		$data = $this->User_model->firma($id);
-	
-		$this->load->view('redactar', $data);
-
 	}
 
 	function upload_firma() {
@@ -106,7 +97,7 @@ class User extends CI_Controller {
         $config['overwrite'] = TRUE;
         
         $this->load->library('upload', $config);
- 
+ 	
         if (isset($_FILES['file']['name'])) {
             if (0 < $_FILES['file']['error']) {
                 echo 'Error durante la carga' . $_FILES['file']['error'];
@@ -114,11 +105,11 @@ class User extends CI_Controller {
                 if (file_exists('./uploads/firmas' . $_FILES['file']['name'])) {
                     echo 'Nombre de archivo ya existe : uploads/firmas' . $_FILES['file']['name'];
                 } else {
-                    $this->load->library('upload', $config);
+									$this->load->library('upload', $config);
                     if (!$this->upload->do_upload('file')) {
                         echo $this->upload->display_errors();
                     } else {
-                        echo 'Firma agregada con éxito!';
+                        echo 'Firma agregada con éxito!'. $firma;
                     }
                 }
             }

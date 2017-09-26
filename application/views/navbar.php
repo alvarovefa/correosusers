@@ -14,7 +14,7 @@
         <li><a href="<?= base_url('book/book')?>">Contactos</a></li>
         <li><a href="<?= base_url('Cpersona/verLista')?>">Redactar</a></li>
         <li><a href="<?= base_url('user/user')?>">Agregar Usuario</a></li>
-        <li><a href="<?= base_url('user/crearFirma')?>">Agregar Firma</a></li>
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <br>
@@ -32,4 +32,5 @@
     </div><!--/.nav-collapse -->
   </div>
 </nav>
+<script type="text/javascript"></script>
 <script src="<?php echo base_url('assets/js/login.js')?>"></script>
