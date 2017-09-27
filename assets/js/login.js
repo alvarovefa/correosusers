@@ -1,4 +1,4 @@
-$(document).on("ready",main);
+$(document).on("ready", main);
 
 function main(){
 
@@ -14,7 +14,7 @@ function main(){
 					$("#login")[0].reset();
 					$("#email").focus();
 				}else{
-					window.location.href = "http://localhost/empresa/Cpersona/verLista";
+					window.location.href = "http://localhost/empresa/cpersona/verLista";
 				}
 			}
 		});

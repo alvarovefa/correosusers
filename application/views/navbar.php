@@ -13,7 +13,8 @@
       <ul class="nav navbar-nav">
         <li><a href="<?= base_url('book/book')?>">Contactos</a></li>
         <li><a href="<?= base_url('Cpersona/verLista')?>">Redactar</a></li>
-        <li><a href="<?= base_url('user/user')?>">Agregar Usuario</a></li>
+        <li><a href="<?= base_url('user/user')?>">Usuarios</a></li>
+        <li><a href="<?= base_url('HistorialC')?>">Historial de envíos</a></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -33,4 +34,20 @@
   </div>
 </nav>
 <script type="text/javascript"></script>
-<script src="<?php echo base_url('assets/js/login.js')?>"></script>
+<script>
+  function cerrar(){
+
+    $.ajax({
+      url:"http://localhost/empresa/login/cerrar",
+      type:"POST", 
+      data:{},
+      success:function(){
+        if (confirm('¿Está seguro que desea cerrar sesión?')) {         
+          window.location.href = "http://localhost/empresa";
+        }
+      }
+    });
+
+  
+}
+</script>

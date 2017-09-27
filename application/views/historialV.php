@@ -7,6 +7,8 @@
     <title>Domus</title>
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/datatables/css/dataTables.bootstrap.css')?>" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="<?php echo base_url('assets/js/login.js')?>"></script>
   </head>
   <body>
     <?php 
@@ -16,10 +18,11 @@
       }else{
         $this->load->view('usernavbar');
       }
-    ?>
+      ?>
 <br />
 <br />
-<br />          
+<br />
+                
   <div class="container">
     <br />
     <br />
@@ -28,27 +31,21 @@
         <tr>
           <th>Fecha</th>
           <th>Enviado por</th>
-					<th>Enviado a</th>
+          <th>Enviado a</th>
           <th>Correo</th>
-  
+
         </tr>
       </thead>
       <tbody>
-				<?php foreach($regs as $reg){?>
-				     <tr>
+        <?php foreach($regs as $reg){?>
+             <tr>
                   <td><?php echo $reg->fecha;?></td>
                   <td><?php echo $reg->nombres;?></td>
                   <td><?php echo $reg->contacto;?></td>
                   <td><?php echo $reg->correo;?></td>
-                  <td>
-
-								</td>
-				      </tr>
-				     <?php }?>
-
-
-
-      </tbody>
+              </tr>
+             <?php }?>
+</tbody>
 
       <tfoot>
         <tr>
@@ -67,5 +64,11 @@
   <script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
   <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
 
+
+  <script type="text/javascript">
+  $(document).ready( function () {
+      $('#table_id').DataTable();
+  } );
+  </script>
   </body>
 </html>
