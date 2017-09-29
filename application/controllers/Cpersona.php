@@ -10,7 +10,7 @@ class Cpersona extends CI_Controller {
             $this->load->helper('date');
             if (!$this->session->userdata("login")) {
             redirect(base_url());
-        }
+            }
     }
 
 
@@ -30,7 +30,7 @@ class Cpersona extends CI_Controller {
         echo json_encode($data);
     }
 
-        function sendMail(){
+    function sendMail(){
         
         date_default_timezone_set("America/Santiago");
         $this->load->helper('text');    
@@ -93,10 +93,11 @@ class Cpersona extends CI_Controller {
                 
                 //$path = set_realpath('./uploads/');
                 //$adjunto = $path.$archivo;
-                
+            
                 if($this->email->send())
                  {
-                  
+
+
                     $this->load->helper("file");
                     delete_files('./uploads/');
                     echo ("<SCRIPT LANGUAGE='JavaScript'>

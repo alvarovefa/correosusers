@@ -9,6 +9,9 @@ class User extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->library('encrypt');
 	 		$this->load->model('User_model');
+				if (!$this->session->userdata("login")) {
+				redirect(base_url());
+            }
 	 	}
 
 	public function user()

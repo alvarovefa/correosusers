@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src='https://rawgit.com/markdalgleish/stellar.js/master/jquery.stellar.js'></script>
 <meta charset="UTF-8">
@@ -33,7 +35,7 @@
   margin-left: 290px;
 
   }
-
+ 
   </style>
   
     <?php 
@@ -51,12 +53,12 @@
 <div class="container" style="margin-right: 100px;">
     <div class="row">
         <div class="col-md-9 col-md-offset-3">
-            <form class="form-horizontal" enctype='multipart/form-data' method="POST" action="<?=base_url();?>Cpersona/sendMail">
+            <form id="form" class="form-horizontal" enctype='multipart/form-data' method="POST" action="<?=base_url();?>Cpersona/sendMail">
                 <fieldset>
                   <div class="form-group">
                       <div class="col-md-6">
                           <label style="font-size: 15px; margin-left: 215px;">Destinatarios</label><br />
-                          <input type="button" name="agregardes" id="agregardes" onclick="llenarDestino();correos();" style="font-size: 15px; margin-left: 215px;" value="Agregar Destinatarios">
+                          <input type="button" name="agregardes" id="agregardes" onclick="llenarDestino();" style="font-size: 15px; margin-left: 215px;" value="Agregar Destinatarios">
                           <input style="margin-left: 215px;" id="email" name="email" type="text" class="form-control" required>
                           <label style="font-size: 15px; margin-left: 215px;">Asunto</label><br />
                           <input style="margin-left: 215px;" type="text" class="form-control" name="asunto" id="asunto">
@@ -76,17 +78,38 @@
 
                   <div>
                       <br />
-                      <input style="margin-left: 215px;" class="btn btn-primary" type="submit" name="enviar" value="Enviar">
+                      <input style="margin-left: 215px;" class="btn btn-primary" type="submit" onclick="loading()" name="enviar" value="Enviar">
+
                   </div>
+                <div class="modal fade" id="loader" role="dialog">
+                  <div class="modal-dialog">
+
+                      <img style="margin-top: 10%; margin-left: 50%; margin-right: 50%;" src="../assets/images/loading.gif">
+
+                  </div> 
+                </div>
                 </fieldset>
             </form>
         </div>
     </div>
-</div>             
+</div> 
+
 <div style="margin-top: -600px; float: left;">    
         <?php $this->load->view("clientes"); ?>
 </div>
+<script type="text/javascript">
+  
+  function loading(){
 
+    $('#form').on('submit', function(){
+    $('#loader').modal('show');
+
+
+    });
+
+  }
+
+</script>
 
 <script type="text/javascript">
     function submit() {
@@ -128,6 +151,7 @@
     });
   });
 </script>
+
 <script src="<?php echo base_url('assets/js/login.js')?>"></script>
 <script src="<?php echo base_url();?>assets/js/jquery-1.11.3.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>

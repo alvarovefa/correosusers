@@ -1894,7 +1894,7 @@ Toolbar = (function(superClass) {
       return;
     }
     if (!$.isArray(this.opts.toolbar)) {
-      this.opts.toolbar = ['bold', 'italic', 'underline','alignment','color','fontScale', 'strikethrough', '|','table', 'ol', 'ul', '|', 'link', '|', 'indent', 'outdent'];
+      this.opts.toolbar = ['bold', 'italic', 'underline','alignment','color','fontScale', 'strikethrough', '|', 'ol', 'ul', '|', 'link', '|', 'indent', 'outdent'];
     }
     this._render();
     this.list.on('click', function(e) {
