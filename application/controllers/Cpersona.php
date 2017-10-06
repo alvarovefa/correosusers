@@ -75,8 +75,8 @@ class Cpersona extends CI_Controller {
                 $saludo = $alias['alias'];
                 $saludo = htmlentities($saludo, ENT_QUOTES,'UTF-8');
                 $mensaje = ascii_to_entities($mensaje);
-                $enviar = $saludo." ".$mensaje;
-                    
+                //$enviar = $saludo." ".$mensaje;
+                $enviar = $this->load->view('firma', $data, TRUE);    
                 $data = array(
                     'id_usuario' => $usuario,
                     'fecha' => $fecha,
@@ -90,6 +90,7 @@ class Cpersona extends CI_Controller {
                 $this->email->to($value);
                 $this->email->subject($asunto);
                 $this->email->message($enviar);
+
                 
                 //$path = set_realpath('./uploads/');
                 //$adjunto = $path.$archivo;
@@ -194,5 +195,17 @@ class Cpersona extends CI_Controller {
             echo 'Porfavor selecciona un archivo';
         }
     }
+
+    function image(){
+
+      $this->load->model("User_model");
+
+      $somedata = $this->User_model->getImage($this->session->userdata('id'));
+
+      $data['image'] = $somedata['image'];
+
+      $this->load->view('redactar', $data);
+    }
+
  
     }

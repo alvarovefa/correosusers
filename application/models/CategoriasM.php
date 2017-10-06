@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User_model extends CI_Model
+class CategoriasM extends CI_Model
 {
 
-	var $table = 'usuarios';
+	var $table = 'categorias';
 
 
 	public function __construct()
@@ -14,11 +14,11 @@ class User_model extends CI_Model
 	}
 
 
-	public function get_all_users()
+	public function lista()
 		{
 
-		$this->db->from('usuarios');
-		$this->db->where('id_tipo_usuario', '2');
+		$this->db->from('categorias');
+		$this->db->order_by("nombre", "asc");
 		$query=$this->db->get();
 		return $query->result();
 		}

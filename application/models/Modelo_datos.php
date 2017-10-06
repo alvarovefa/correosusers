@@ -34,8 +34,9 @@ class Modelo_datos extends CI_Model {
 
  public function mostrar($valor){
  	$this->db->like("nombre", $valor);
-
- 	$consulta = $this->db->get("contactos");
+ 	$this->db->from("contactos");
+ 	$this->db->join("categorias", "contactos.id_categoria = categorias.id_categoria");
+ 	$consulta = $this->db->get();
 
  	if ($consulta->num_rows() > 0) {
  		return $consulta->result();
@@ -46,13 +47,21 @@ class Modelo_datos extends CI_Model {
  }
 public function buscar($buscar)
 	{
-		$this->db->like("categoria",$buscar);
-		$this->db->or_like("nombre_empresa",$buscar);
+	
+		$this->db->like("nombre_empresa",$buscar);
 		$this->db->or_like("contacto",$buscar);
-		$this->db->or_like("correo",$buscar);
-		$this->db->or_like("celular",$buscar);
-		$this->db->or_like("alias",$buscar);
-		$this->db->select("contacto, correo, nombre_empresa");
+		
+		$this->db->select("contacto, nombre_empresa, correo");
+			$consulta = $this->db->get("contactos");
+			return $consulta->result();
+	}
+
+public function buscarC($buscarC)
+	{
+
+		$this->db->where("id_categoria",$buscarC);
+		
+		$this->db->select("contacto, nombre_empresa");
 			$consulta = $this->db->get("contactos");
 			return $consulta->result();
 	}

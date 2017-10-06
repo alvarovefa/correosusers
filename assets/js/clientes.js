@@ -18,7 +18,7 @@ function main(){
 function mostrarDatos(valorBuscar){
 
 	$.ajax({
-		url : "http://localhost/ci_crud/Cpersona/mostrar",
+		url : "http://localhost/empresa/Cpersona/mostrar",
 		type: "POST",
 		data: {buscar: valorBuscar},
 		dataType:"json",

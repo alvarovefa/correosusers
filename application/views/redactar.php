@@ -41,7 +41,7 @@
     <?php 
     $tipo = $this->session->userdata('tipo');
     if ( $tipo == "1") {
-      $this->load->view('navbar'); 
+      $this->load->view('navbar');
     }else{
       $this->load->view('usernavbar');
     }
@@ -66,7 +66,9 @@
                       </div>
                     
                       <div class="col-md-9" style="float: right;">
-                          <textarea id="editor" name="mensaje"></textarea>
+                          <div id="editor" name="mensaje" contenteditable="true">
+
+                          </div>
                       </div> 
                   </div>
                   <section>
@@ -75,7 +77,6 @@
                       <input type="file" id="file" name="file" />
                       </div>
                   </section>
-
                   <div>
                       <br />
                       <input style="margin-left: 215px;" class="btn btn-primary" type="submit" onclick="loading()" name="enviar" value="Enviar">

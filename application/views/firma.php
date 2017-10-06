@@ -1,6 +1,20 @@
 
-			<?php
-				$id =$this->session->userdata('id');
-				$firma = $this->User_model->firma($id);
-					echo $firma;
-			  ?>
+<div>
+	<p>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>______________
+		<br>
+		Marcelo Duarte
+		<br>
+        Consultora MDA
+    <br>
+  <img src="../assets/images/firma.png" border="0">
+	</p>
+</div>

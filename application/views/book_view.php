@@ -104,7 +104,7 @@
     //$('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
     }
 
-    function edit_book(id)
+    function edit_book(codigo)
     {
       save_method = 'update';
       $('#form')[0].reset(); // reset form on modals
