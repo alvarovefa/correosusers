@@ -41,11 +41,11 @@
           <th>Mts2</th>
           <th>UF/Mts2</th>
           <th>Valor</th>
-          <th>Letrero</th>
           <th>Rol&nbsp;&nbsp;&nbsp;&nbsp;</th>
           <th>Propietario</th>
           <th>Corredor</th>
           <th>Observaciones</th>
+          <th>Letrero</th>
           <th style="width:125px;">Administrar
           </p></th>
         </tr>
@@ -63,11 +63,11 @@
                   <td><?php echo $reg->mts2;?></td>
                   <td><?php echo $reg->uf;?></td>
                   <td><?php echo $reg->valor;?></td>
-                  <td><?php echo $reg->letrero;?></td>
                   <td><?php echo $reg->rol;?></td>
                   <td><?php echo $reg->propietario;?></td>
                   <td><?php echo $reg->corredor;?></td>
                   <td><?php echo $reg->observaciones;?></td>
+                  <td><?php echo $reg->letrero;?></td>
                   <td>
                     <button class="btn btn-warning" onclick="edit_terreno(<?php echo $reg->id_terreno;?>)"><i class="glyphicon glyphicon-pencil"></i></button>
                     <button class="btn btn-danger" onclick="delete_terreno(<?php echo $reg->id_terreno;?>)"><i class="glyphicon glyphicon-remove"></i></button>
@@ -88,11 +88,11 @@
           <th>Mts2</th>
           <th>UF/Mts2</th>
           <th>Valor</th>
-          <th>Letrero</th>
           <th>Rol</th>
           <th>Propietario</th>
           <th>Corredor</th>
           <th>Observaciones</th>
+          <th>Letrero</th>
         </tr>
       </tfoot>
     </table>

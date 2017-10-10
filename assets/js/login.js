@@ -14,7 +14,7 @@ function main(){
 					$("#login")[0].reset();
 					$("#email").focus();
 				}else{
-					window.location.href = "http://localhost/empresa/cpersona/verLista";
+					window.location.href = "http://localhost/empresa/CategoriaC";
 				}
 			}
 		});

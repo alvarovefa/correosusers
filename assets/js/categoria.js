@@ -6,21 +6,20 @@ $("#checkTodos").change(function () {
   });
 
 function main(){
-	mostrarDatos("",1);
 
-	$("input[name=busqueda]").keyup(function(){
-		valorBuscar = $(this).val();
-		mostrarDatos(valorBuscar,1);
+	$("select[name=categoria]").change(function(){
+		valorBuscar2 = $(this).val();
+		mostrarDatos2(valorBuscar2);
 	});
 }
 
 
-function mostrarDatos(valorBuscar){
+function mostrarDatos2(valorBuscar){
 
 	$.ajax({
-		url : "http://localhost/empresa/Cpersona/mostrar",
+		url : "http://localhost/empresa/CategoriaC/mostrarCat",
 		type: "POST",
-		data: {buscar: valorBuscar},
+		data: {categoria: valorBuscar},
 		dataType:"json",
 		success:function(response){
 			

@@ -32,11 +32,11 @@ class TerrenosC extends CI_Controller {
                 'ciudad' => $this->input->post('ciudad'),
                 'mts2' => $this->input->post('mts2'),   
                 'uf' => $this->input->post('uf'),
-                'letrero' => $this->input->post('valor'),
                 'rol' => $this->input->post('rol'),
                 'propietario' => $this->input->post('propietario'),
                 'corredor' => $this->input->post('corredor'),
-                'observaciones' => $this->input->post('observaciones')
+                'observaciones' => $this->input->post('observaciones'),
+                'letrero' => $this->input->post('valor')
             );
             $insert = $this->TerrenosM->terreno_add($data);
             echo json_encode(array("status" => TRUE));

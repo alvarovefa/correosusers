@@ -17,5 +17,19 @@ class CategoriaC extends CI_Controller {
         $data['cat'] = $this->CategoriasM->lista();
         $this->load->view('redactar', $data);
      }
+
+    public function mostrarCat(){
+
+        //echo "<script> alert('hola');</script>";
+        //die();
+        //valor a Buscar
+        $id = $this->input->post('categoria');
+        
+        $data = array(
+            "cat" => $this->CategoriasM->buscar_cat($id)          
+        );
+
+        echo json_encode($data);
+    }
  
     }

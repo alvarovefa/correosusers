@@ -21,9 +21,7 @@
 							<?php endforeach; ?>
 						</select>
 					</div>
-					<div style="float: right;">
-						<button onclick="#" class="btn btn-default">Buscar</button>
-					</div>
+
 					<div class="panel-heading">
 						<input type="text" class="form-control" name="busqueda" placeholder="Buscar por nombre o empresa" />
 						<p>	
@@ -45,26 +43,11 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-	
-  $("#categoria").change(function() {
-    $.ajax({
-      type: "POST",
-      url: "<? base_url()?>/CategoriaC",
-      success: function(data){
-        var json = $.parseJSON(data);
-        $('#categoria').find('option').remove();
-        $('#categoria').append('<option disabled selected>Seleccione Categoria</option>');
-        json.forEach(function(element) {
-          $('#categoria').append('<option value="' + element.id_categoria + '">' + element.nombre + '</option>');
-        });
-      }
-    });
-  });
-</script>
+
 	<script src="<?php echo base_url();?>assets/js/jquery-1.11.3.min.js"></script>
 	<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url();?>assets/js/clientes.js"></script>
+  <script src="<?php echo base_url();?>assets/js/clientes.js"></script>
+	
 
   </body>
 </html>

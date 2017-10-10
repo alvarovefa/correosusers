@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Cpersona extends CI_Controller {
 
     function __construct() {
-        parent::__construct();  
+        parent::__construct();
             $this->load->model('Modelo_datos');
             $this->load->library('encrypt');
             $this->load->helper('date');
@@ -29,6 +29,8 @@ class Cpersona extends CI_Controller {
         );
         echo json_encode($data);
     }
+
+
 
     function sendMail(){
         

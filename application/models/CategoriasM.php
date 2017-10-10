@@ -23,6 +23,21 @@ class CategoriasM extends CI_Model
 		return $query->result();
 		}
 
+	public function buscar_cat($id){
+
+		$this->db->select('contacto, correo, nombre_empresa');
+		$this->db->from('contactos');
+		$this->db->join('categorias', 'categorias.id_categoria = contactos.id_categoria');
+		$this->db->where('categorias.id_categoria', $id);
+		$query = $this->db->get();
+
+		if ($query->num_rows()>0) {
+			return $query->result();
+		}else{
+			return false;
+		}
+
+	}
 
 	public function get_by_id($id)
 	{

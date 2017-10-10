@@ -4,7 +4,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
   <select name="categoria" id="categoria">
-    <option disabled selected>Seleccione Categoría</option>
+    <option disabled selected>Seleccionebebe Categoría</option>
     <?php foreach ($cat as $cats): ?>
       <option value="<?php echo $cats->id_categoria ?>"><?php echo $cats->nombre ?></option>
     <?php endforeach; ?>
