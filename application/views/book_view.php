@@ -50,7 +50,7 @@
 				<?php foreach($books as $book){?>
 				     <tr>
                   <td><?php echo $book->id;?></td>
-                  <td><?php echo $book->categoria;?></td>
+                  <td><?php echo $book->nombre;?></td>
                   <td><?php echo $book->nombre_empresa;?></td>
                   <td><?php echo $book->contacto;?></td>
                   <td><?php echo $book->correo;?></td>
@@ -104,21 +104,21 @@
     //$('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
     }
 
-    function edit_book(codigo)
+    function edit_book(id)
     {
       save_method = 'update';
       $('#form')[0].reset(); // reset form on modals
 
       //Ajax Load data from ajax
       $.ajax({
-        url : "<?php echo site_url('/book/ajax_edit/')?>/" + id,
+        url : "<?php echo site_url('/book/ajax_edit/')?>/" +id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
 
             $('[name="id"]').val(data.id);
-            $('[name="categoria"]').val(data.categoria);
+            $('[name="categoria"]').val(data.nombre);
             $('[name="empresa"]').val(data.nombre_empresa);
             $('[name="contacto"]').val(data.contacto);
             $('[name="correo"]').val(data.correo);
@@ -210,7 +210,13 @@
             <div class="form-group">
               <label class="control-label col-md-3">Categoría</label>
               <div class="col-md-9">
-                <input name="categoria" placeholder="Categoría" class="form-control" type="text">
+                <select class="form-control" name="categoria" id="categoria">
+                  <option disabled selected>Seleccione Categoría</option>
+                  <?php foreach ($cat as $cats): ?>
+                  <option value="<?php echo $cats->id_categoria ?>"><?php echo $cats->nombre ?></option>
+                  <?php endforeach; ?>
+              </select>
+                
               </div>
             </div>
             <div class="form-group">

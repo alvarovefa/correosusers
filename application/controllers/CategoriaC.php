@@ -18,6 +18,12 @@ class CategoriaC extends CI_Controller {
         $this->load->view('redactar', $data);
      }
 
+ public function modal(){
+
+        $data['cat'] = $this->CategoriasM->lista();
+        $this->load->view('redactar', $data);
+     }
+
     public function mostrarCat(){
 
         //echo "<script> alert('hola');</script>";

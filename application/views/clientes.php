@@ -13,7 +13,7 @@
 		<div class="row">
 			<div class="col-sx-3" style="width: 350px;">
 				<div>
-					<div class="col-sx-3" style="width: 250px; padding-left: 15px">
+					<div class="col-sx-3" style="float: left; width: 66%; padding-left: 4%;">
 						<select class="form-control" name="categoria" id="categoria">
 							<option disabled selected>Seleccione Categoría</option>
 							<?php foreach ($cat as $cats): ?>
@@ -22,14 +22,18 @@
 						</select>
 					</div>
 
-					<div class="panel-heading">
+					<div style="float: right; width: -20%; padding-right: 10%">
+						<button class="btn btn-success" onclick="add_user()"><i class="glyphicon glyphicon-plus"></i>  Crear</button>
+					<br>
+					</div>
+					<div class="panel-heading" style="padding-right: 10%">
 						<input type="text" class="form-control" name="busqueda" placeholder="Buscar por nombre o empresa" />
 						<p>	
 							<input type="checkbox" name="check" id="checkTodos" value="">Marcar/Desmarcar Todo
 						</p>
 						<p>
 					</div>
-					<div class="panel-body" style="overflow-x: scroll; overflow-x: hidden; height: 500px; ">
+					<div class="panel-body" style="overflow-x: auto; height: 500px;">
 						<table style="width: 300px;" id="tbclientes" class="table table-bordered">
 							<tbody>
 								<tr>

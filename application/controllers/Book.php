@@ -8,19 +8,21 @@ class Book extends CI_Controller {
 	 		parent::__construct();
 			$this->load->helper('url');
 	 		$this->load->model('Book_model');
+	 		$this->load->model('CategoriasM');
 	 	}
 
 	public function book()
 	{
 
 		$data['books']=$this->Book_model->get_all_books();
+		$data['cat'] = $this->CategoriasM->lista();
 		$this->load->view('book_view',$data);
 	}
 
 	public function book_add()
 		{
 			$data = array(
-					'categoria' => $this->input->post('categoria'),
+					'id_categoria' => $this->input->post('categoria'),
 					'nombre_empresa' => $this->input->post('empresa'),
 					'contacto' => $this->input->post('contacto'),
 					'correo' => $this->input->post('correo'),
@@ -47,13 +49,15 @@ class Book extends CI_Controller {
 		{
 			$data = $this->Book_model->get_by_id($id);
 
+
 			echo json_encode($data);
 		}
 
 		public function book_update()
 	{
+
 		$data = array(
-			'categoria' => $this->input->post('categoria'),
+			'id_categoria' => $this->input->post('categoria'),
 			'nombre_empresa' => $this->input->post('empresa'),
 			'contacto' => $this->input->post('contacto'),
 			'correo' => $this->input->post('correo'),

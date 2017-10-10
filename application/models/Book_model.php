@@ -16,25 +16,33 @@ class Book_model extends CI_Model
 
 public function get_all_books()
 {
-$this->db->from('contactos');
-$query=$this->db->get();
-return $query->result();
+	$this->db->select('contactos.id, categorias.nombre, contactos.nombre_empresa, contactos.contacto, contactos.correo, contactos.celular, contactos.alias');
+	$this->db->from('contactos');
+	$this->db->join('categorias', 'categorias.id_categoria = contactos.id_categoria');
+	$query=$this->db->get();
+	return $query->result();
 }
 
 
 	public function get_by_id($id)
 	{
+		$this->db->select('contactos.id, categorias.id_categoria, categorias.nombre, contactos.nombre_empresa, contactos.contacto, contactos.correo, contactos.celular, contactos.alias');
+		$this->db->from('contactos');
+		$this->db->join('categorias', 'categorias.id_categoria = contactos.id_categoria');
+		$this->db->where('id',$id);
+		$query=$this->db->get();
+		/*
 		$this->db->from($this->table);
 		$this->db->where('id',$id);
 		$query = $this->db->get();
-
+		*/
 		return $query->row();
 	}
 
 	public function book_add($data)
 	{
 		$this->db->insert($this->table, $data);
-		return $this->db->insert_id();
+		//return $this->db->insert_id();
 	}
 
 	public function book_update($where, $data)
