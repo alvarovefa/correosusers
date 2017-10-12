@@ -38,9 +38,9 @@
           <th>Dirección</th>
           <th>Región</th>
           <th>Ciudad</th>
-          <th>Mts2</th>
+          <th>Mts2/miles</th>
           <th>UF/Mts2</th>
-          <th>Valor</th>
+          <th>Valor/miles</th>
           <th>Rol&nbsp;&nbsp;&nbsp;&nbsp;</th>
           <th>Propietario</th>
           <th>Corredor</th>
@@ -51,8 +51,29 @@
         </tr>
       </thead>
       <tbody>
+        <?php
+$apiUrl = 'http://mindicador.cl/api';
+//Es necesario tener habilitada la directiva allow_url_fopen para usar file_get_contents
+if ( ini_get('allow_url_fopen') ) {
+    $json = file_get_contents($apiUrl);
+} else {
+    //De otra forma utilizamos cURL
+    $curl = curl_init($apiUrl);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $json = curl_exec($curl);
+    curl_close($curl);
+}
+ 
+$dailyIndicators = json_decode($json);
+$uf = $dailyIndicators->uf->valor;
+echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
+?>
         <?php foreach($regs as $reg){?>
              <tr>
+                  <?php $vterreno = $reg->valor/1000; ?>
+                  <?php $metros = $reg->mts2/1000; ?>
+                  <?php $fomento = number_format($reg->uf,2); ?>
+                  <? $valortotal = ($reg->uf * $uf) * $reg->mts2; ?>
                   <td><?php echo $reg->id_terreno;?></td>
                   <td><?php echo $reg->codigo;?></td>
                   <td><?php echo $reg->inmueble;?></td>
@@ -60,9 +81,9 @@
                   <td><?php echo $reg->direccion;?></td>
                   <td><?php echo $reg->region;?></td>
                   <td><?php echo $reg->ciudad;?></td>
-                  <td><?php echo $reg->mts2;?></td>
-                  <td><?php echo $reg->uf;?></td>
-                  <td><?php echo $reg->valor;?></td>
+                  <td><?php echo $metros;?></td>
+                  <td><?php echo $fomento;?></td>
+                  <td><?php echo $valortotal;?></td>
                   <td><?php echo $reg->rol;?></td>
                   <td><?php echo $reg->propietario;?></td>
                   <td><?php echo $reg->corredor;?></td>
@@ -96,23 +117,7 @@
         </tr>
       </tfoot>
     </table>
-<?php
-$apiUrl = 'http://mindicador.cl/api';
-//Es necesario tener habilitada la directiva allow_url_fopen para usar file_get_contents
-if ( ini_get('allow_url_fopen') ) {
-    $json = file_get_contents($apiUrl);
-} else {
-    //De otra forma utilizamos cURL
-    $curl = curl_init($apiUrl);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $json = curl_exec($curl);
-    curl_close($curl);
-}
- 
-$dailyIndicators = json_decode($json);
-$uf = $dailyIndicators->uf->valor;
-echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
-?>
+
   </div>
 
   <script src="<?php echo base_url('assets/jquery/jquery-3.1.0.min.js')?>"></script>
