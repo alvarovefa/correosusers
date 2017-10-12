@@ -16,6 +16,7 @@
         <li><a href="<?= base_url('user/user')?>">Usuarios</a></li>
         <li><a href="<?= base_url('HistorialC')?>">Historial</a></li>
         <li><a href="<?= base_url('TerrenosC')?>">Terrenos</a></li>
+        <li><a href="<?= base_url('CategoriaC/categorias')?>">Categorías</a></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">

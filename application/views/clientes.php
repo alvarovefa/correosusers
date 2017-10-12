@@ -21,11 +21,6 @@
 							<?php endforeach; ?>
 						</select>
 					</div>
-
-					<div style="float: right; width: -20%; padding-right: 10%">
-						<button class="btn btn-success" onclick="add_user()"><i class="glyphicon glyphicon-plus"></i>  Crear</button>
-					<br>
-					</div>
 					<div class="panel-heading" style="padding-right: 10%">
 						<input type="text" class="form-control" name="busqueda" placeholder="Buscar por nombre o empresa" />
 						<p>	

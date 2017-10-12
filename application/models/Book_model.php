@@ -5,6 +5,7 @@ class Book_model extends CI_Model
 {
 
 	var $table = 'contactos';
+	var $table2 = 'categorias';
 
 
 	public function __construct()
@@ -42,6 +43,12 @@ public function get_all_books()
 	public function book_add($data)
 	{
 		$this->db->insert($this->table, $data);
+		//return $this->db->insert_id();
+	}
+
+	public function cat_add($data)
+	{
+		$this->db->insert($this->table2, $data);
 		//return $this->db->insert_id();
 	}
 

@@ -12,13 +12,13 @@ class CategoriaC extends CI_Controller {
         }
     }
 
- public function index(){
+     public function index(){
 
-        $data['cat'] = $this->CategoriasM->lista();
-        $this->load->view('redactar', $data);
-     }
+            $data['cat'] = $this->CategoriasM->lista();
+            $this->load->view('redactar', $data);
+         }
 
- public function modal(){
+     public function modal(){
 
         $data['cat'] = $this->CategoriasM->lista();
         $this->load->view('redactar', $data);
@@ -38,4 +38,48 @@ class CategoriaC extends CI_Controller {
         echo json_encode($data);
     }
  
+    public function categorias(){
+
+        $data['categoria'] = $this->CategoriasM->lista(); 
+        $this->load->view('categoriaV', $data);
+
+    }
+
+    public function book_add()
+        {
+            $data = array(
+                    'nombre' => $this->input->post('categoria')
+                );
+            $insert = $this->CategoriasM->book_add($data);
+            echo json_encode(array("status" => TRUE));
+        }
+
+
+        public function ajax_edit($id_categoria)
+        {
+            $data = $this->CategoriasM->get_by_id($id_categoria);
+
+
+            echo json_encode($data);
+        }
+
+        public function book_update()
+    {
+
+        $data = array(
+
+            'nombre' => $this->input->post('categoria')
+
+            );
+
+        $this->CategoriasM->book_update(array('id_categoria' => $this->input->post('id_categoria')), $data);
+        echo json_encode(array("status" => TRUE));
+    }
+
+    public function book_delete($id)
+    {
+        $this->CategoriasM->delete_by_id($id);
+        echo json_encode(array("status" => TRUE));
+    }
+
     }

@@ -170,6 +170,7 @@
         });
     }
 
+
     function delete_book(id)
     {
       if(confirm('¿Estás seguro de hacer esto?'))
@@ -262,6 +263,5 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
   <!-- End Bootstrap modal -->
-
   </body>
 </html>
