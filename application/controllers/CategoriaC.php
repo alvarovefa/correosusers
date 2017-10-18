@@ -7,6 +7,7 @@ class CategoriaC extends CI_Controller {
         parent::__construct();  
             $this->load->helper('date');
             $this->load->model('CategoriasM');
+            $this->load->model('TerrenosM');
             if (!$this->session->userdata("login")) {
             redirect(base_url());
         }
@@ -15,6 +16,8 @@ class CategoriaC extends CI_Controller {
      public function index(){
 
             $data['cat'] = $this->CategoriasM->lista();
+            $data['terreno'] = $this->TerrenosM->listaTerrenos();
+        
             $this->load->view('redactar', $data);
          }
 

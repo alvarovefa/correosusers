@@ -8,6 +8,7 @@ class Cpersona extends CI_Controller {
             $this->load->model('Modelo_datos');
             $this->load->library('encrypt');
             $this->load->helper('date');
+            $this->load->model('ImageM');
             if (!$this->session->userdata("login")) {
             redirect(base_url());
             }
@@ -59,13 +60,18 @@ class Cpersona extends CI_Controller {
             $to_email = $this->input->post("email");
             $lista = explode(',', $to_email);
             $mensaje = $this->input->post("mensaje");
+            $mensaje .= '<img src=http://mail.mayordomus.cl/uploads/firma.png alt="Mi Firma"> <br>';
             $asunto = utf8_decode($this->input->post("asunto"));
+            $id = $this->session->userdata('id');
+            $firma = $this->input->post('firma');
+
 
             $usuario = $this->session->userdata('id');
             $fecha = date("Y-m-d H:i:s");
 
             
             $archivo = $_FILES['file']['name'];
+            $archivoF = str_replace(" ", "_", $archivo);
             
             if (empty($_FILES['file']['name'])) {
 
@@ -78,7 +84,7 @@ class Cpersona extends CI_Controller {
                 $saludo = htmlentities($saludo, ENT_QUOTES,'UTF-8');
                 $mensaje = ascii_to_entities($mensaje);
                 //$enviar = $saludo." ".$mensaje;
-                $enviar = $this->load->view('firma', $data, TRUE);    
+                    
                 $data = array(
                     'id_usuario' => $usuario,
                     'fecha' => $fecha,
@@ -91,7 +97,7 @@ class Cpersona extends CI_Controller {
                 $this->email->from('correopruebas@consultoramda.cl');
                 $this->email->to($value);
                 $this->email->subject($asunto);
-                $this->email->message($enviar);
+                $this->email->message($mensaje . $firma);
 
                 
                 //$path = set_realpath('./uploads/');
@@ -105,7 +111,7 @@ class Cpersona extends CI_Controller {
                     delete_files('./uploads/');
                     echo ("<SCRIPT LANGUAGE='JavaScript'>
                     window.alert('Correo Enviado!!')
-                    window.location.href='verLista';
+                    window.location.href='http://localhost/empresa/CategoriaC';
                     </SCRIPT>");
 
                 }
@@ -144,7 +150,7 @@ class Cpersona extends CI_Controller {
                             delete_files('./uploads/');
                             echo ("<SCRIPT LANGUAGE='JavaScript'>
                             window.alert('Correo Enviado!!')
-                            window.location.href='verLista';
+                            window.location.href='http://localhost/empresa/CategoriaC';
                             </SCRIPT>");
 
                                           

@@ -81,4 +81,12 @@ class TerrenosC extends CI_Controller {
         $this->TerrenosM->delete_by_id($id_terreno);
         echo json_encode(array("status" => TRUE));
     }
+
+    public function listaTerrenos(){
+
+        $data['terreno'] = $this->TerrenosM->listaTerrenos();
+        $this->load->view('categoriaV', $data);
+
+    }
+
     }

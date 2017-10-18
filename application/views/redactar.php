@@ -35,7 +35,7 @@
   margin-left: 290px;
 
   }
- 
+
   </style>
   
     <?php 
@@ -66,12 +66,13 @@
                       </div>
                     
                       <div class="col-md-9" style="float: right;">
-                          <div id="editor" name="mensaje" contenteditable="true">
-
-                          </div>
+                          <textarea id="editor" name="mensaje">
+                            <? $this->load->view('firma'); ?>
+                          </textarea>
                       </div> 
                   </div>
                   <section>
+
                       <div style="margin-left: 215px;">
                       <p id="msg"></p>
                       <input type="file" id="file" name="file" />

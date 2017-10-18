@@ -9,12 +9,12 @@
 		<br>
 		<br>
 		<br>
-		<br>______________
 		<br>
-		Marcelo Duarte
+		Atte.
 		<br>
-        Consultora MDA
+		<strong>Marcelo Duarte Aliaga</strong>
+		<br>
+    Consultora MDA
     <br>
-  <img src="../assets/images/firma.png" border="0">
 	</p>
 </div>

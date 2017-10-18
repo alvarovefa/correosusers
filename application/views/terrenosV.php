@@ -70,10 +70,11 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
 ?>
         <?php foreach($regs as $reg){?>
              <tr>
-                  <?php $vterreno = $reg->valor/1000; ?>
+                  
                   <?php $metros = $reg->mts2/1000; ?>
-                  <?php $fomento = number_format($reg->uf,2); ?>
-                  <? $valortotal = ($reg->uf * $uf) * $reg->mts2; ?>
+                  <?php $fomento = number_format($reg->uf,1); ?>
+                  <? $valortotal = (($reg->uf * $uf) * $reg->mts2)/1000; ?>
+                  <? $valortotalF = number_format($valortotal,0,',','.'); ?>
                   <td><?php echo $reg->id_terreno;?></td>
                   <td><?php echo $reg->codigo;?></td>
                   <td><?php echo $reg->inmueble;?></td>
@@ -83,7 +84,7 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
                   <td><?php echo $reg->ciudad;?></td>
                   <td><?php echo $metros;?></td>
                   <td><?php echo $fomento;?></td>
-                  <td><?php echo $valortotal;?></td>
+                  <td><?php echo $valortotalF;?></td>
                   <td><?php echo $reg->rol;?></td>
                   <td><?php echo $reg->propietario;?></td>
                   <td><?php echo $reg->corredor;?></td>
@@ -309,12 +310,6 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
               <label class="control-label col-md-3">UF/mts2</label>
               <div class="col-md-9">
                 <input name="uf" placeholder="UF por Mts2" class="form-control" type="text">
-            </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-md-3">Valor</label>
-              <div class="col-md-9">
-                <input name="valor" placeholder="Valor" class="form-control" type="text">
             </div>
             </div>
             <div class="form-group">

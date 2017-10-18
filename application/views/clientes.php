@@ -14,12 +14,22 @@
 			<div class="col-sx-3" style="width: 350px;">
 				<div>
 					<div class="col-sx-3" style="float: left; width: 66%; padding-left: 4%;">
+							<select class="form-control" name="terreno" id="terreno">
+								<option disabled selected>Seleccione Terreno</option>
+								<?php foreach ($terreno as $ter): ?>
+								<option value="<?php echo $ter->id_terreno ?>"><?php echo $ter->codigo ?></option>
+								<?php endforeach; ?>
+							</select>
+						<br>
+						</div>
+					<div class="col-sx-3" style="float: left; width: 66%; padding-left: 4%;">
 						<select class="form-control" name="categoria" id="categoria">
 							<option disabled selected>Seleccione Categoría</option>
 							<?php foreach ($cat as $cats): ?>
 							<option value="<?php echo $cats->id_categoria ?>"><?php echo $cats->nombre ?></option>
 							<?php endforeach; ?>
 						</select>
+						<br>
 					</div>
 					<div class="panel-heading" style="padding-right: 10%">
 						<input type="text" class="form-control" name="busqueda" placeholder="Buscar por nombre o empresa" />

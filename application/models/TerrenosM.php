@@ -44,4 +44,18 @@ class TerrenosM extends CI_Model
 		$this->db->delete($this->table);
 	}
 
+	public function listaTerrenos(){
+
+		$this->db->select('id_terreno, codigo');
+		//$this->db->from('terrenos');
+		$query = $this->db->get('terrenos');
+
+			if ($query->num_rows()>0) {
+				return $query->result();
+			}else{
+				return false;
+			}
+
+	}
+
 }
