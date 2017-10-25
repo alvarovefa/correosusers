@@ -11,10 +11,10 @@
     <script src="<?php echo base_url('assets/js/login.js')?>"></script>
   </head>
   <body>
-    <?php 
+    <?php
     $tipo = $this->session->userdata('tipo');
       if ( $tipo == "1") {
-        $this->load->view('navbar'); 
+        $this->load->view('navbar');
       }else{
         $this->load->view('usernavbar');
       }
@@ -22,7 +22,7 @@
 <br />
 <br />
 <br />
-                
+
   <div class="container">
     <br />
     <br />
@@ -32,6 +32,7 @@
           <th>Fecha</th>
           <th>Enviado por</th>
           <th>Enviado a</th>
+          <th>Terreno</th>
           <th>Correo</th>
 
         </tr>
@@ -42,6 +43,7 @@
                   <td><?php echo $reg->fecha;?></td>
                   <td><?php echo $reg->nombres;?></td>
                   <td><?php echo $reg->contacto;?></td>
+                  <td><?php echo $reg->codigo;?></td>
                   <td><?php echo $reg->correo;?></td>
               </tr>
              <?php }?>
@@ -52,6 +54,7 @@
           <th>Fecha</th>
           <th>Enviado por</th>
           <th>Enviado a</th>
+          <th>Terreno</th>
           <th>Correo</th>
         </tr>
       </tfoot>

@@ -25,7 +25,7 @@
     overflow-x:hidden;
     padding-top:10px;
     margin-top: -350px;
-    margin-left: 100px; 
+    margin-left: 100px;
     float: left;
   }
 
@@ -37,8 +37,8 @@
   }
 
   </style>
-  
-    <?php 
+
+    <?php
     $tipo = $this->session->userdata('tipo');
     if ( $tipo == "1") {
       $this->load->view('navbar');
@@ -61,15 +61,26 @@
                           <input type="button" name="agregardes" id="agregardes" onclick="llenarDestino();" style="font-size: 15px; margin-left: 215px;" value="Agregar Destinatarios">
                           <input style="margin-left: 215px;" id="email" name="email" type="text" class="form-control" required>
                           <label style="font-size: 15px; margin-left: 215px;">Asunto</label><br />
-                          <input style="margin-left: 215px;" type="text" class="form-control" name="asunto" id="asunto">
-                          <label style="font-size: 15px; margin-left: 215px;">Mensaje</label><br />
+                          <input style="margin-left: 215px;" type="text" class="form-control" name="asunto" id="asunto"><br>
                       </div>
-                    
+
+                      <div class="col-md-6" style="margin-left: 215px;">
+                          <select class="form-control" name="terreno" id="terreno">
+                            <option disabled selected>Seleccione Terreno</option>
+                            <?php foreach ($terreno as $ter): ?>
+                            <option value="<?php echo $ter->id_terreno ?>"><?php echo $ter->codigo ?></option>
+                            <?php endforeach; ?>
+                          </select>
+                        <br>
+                      </div>
                       <div class="col-md-9" style="float: right;">
+                        <label style="font-size: 15px; margin-left: 0%;">Mensaje</label><br />
+                        <textarea id="text"></textarea>
                           <textarea id="editor" name="mensaje">
+
                             <? $this->load->view('firma'); ?>
                           </textarea>
-                      </div> 
+                      </div>
                   </div>
                   <section>
 
@@ -88,19 +99,49 @@
 
                       <img style="margin-top: 10%; margin-left: 50%; margin-right: 50%;" src="../assets/images/loading.gif">
 
-                  </div> 
+                  </div>
                 </div>
                 </fieldset>
             </form>
         </div>
     </div>
-</div> 
+</div>
 
-<div style="margin-top: -600px; float: left;">    
+<div style="margin-top: -600px; float: left;">
         <?php $this->load->view("clientes"); ?>
 </div>
+<script>
+$(document).on("ready", main);
+function main(){
+  $("select[name=terreno]").change(function(){
+    dato = $(this).val();
+    datosTerreno(dato);
+
+  });
+}
+function datosTerreno(dato){
+
+	$.ajax({
+		url : "http://localhost/empresa/TerrenosC/template/" + dato,
+		type: "POST",
+		data: {terreno: dato},
+		dataType:"json",
+		success:function(response){
+
+			filas = "";
+			$.each(response.ter,function(key,item){
+				filas+="<p>"+item.codigo+"</p>";
+			});
+      $("#text").val(filas);
+			$("#editor").val(filas);
+
+		}
+	});
+
+}
+</script>
 <script type="text/javascript">
-  
+
   function loading(){
 
     $('#form').on('submit', function(){
@@ -134,17 +175,18 @@
     $('#file').on('change', function () {
       var file_data = $('#file').prop('files')[0];
       var form_data = new FormData();
+
       form_data.append('file', file_data);
       $.ajax({
-        url: 'http://mail.mayordomus.cl/Cpersona/upload_file', 
-        dataType: 'text', 
+        url: 'http://mail.mayordomus.cl/Cpersona/upload_file',
+        dataType: 'text',
         cache: false,
         contentType: false,
         processData: false,
         data: form_data,
         type: 'post',
         success: function (response) {
-            $('#msg').html(response); 
+            $('#msg').html(response);
         },
         error: function (response) {
             $('#msg').html(response);
@@ -157,10 +199,4 @@
 <script src="<?php echo base_url('assets/js/login.js')?>"></script>
 <script src="<?php echo base_url();?>assets/js/jquery-1.11.3.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-
 <script src="<?php echo base_url();?>assets/js/clientes.js"></script>
-
-<script type="text/javascript">
-
-</script>
-

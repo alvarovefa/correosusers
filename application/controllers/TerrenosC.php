@@ -4,23 +4,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class TerrenosC extends CI_Controller {
 
     function __construct() {
-        parent::__construct();  
+        parent::__construct();
             $this->load->model('TerrenosM');
             if (!$this->session->userdata("login")) {
             redirect(base_url());
         }
     }
 
-     public function index(){
+  public function index(){
 
+    //echo "hola!!";
             $data['regs'] = $this->TerrenosM->lista();
-            $this->load->view('terrenosV', $data);
+             $this->load->view('terrenosV', $data);
          }
 
     public function terreno_add()
         {
             $data = array(
-                
+
                 'codigo' => $this->input->post('codigo'),
                 'inmueble' => $this->input->post('inmueble'),
                 'tipo' => $this->input->post('tipo'),
@@ -30,7 +31,7 @@ class TerrenosC extends CI_Controller {
                 'mts2' => $this->input->post('mts2'),
                 'uf' => $this->input->post('uf'),
                 'ciudad' => $this->input->post('ciudad'),
-                'mts2' => $this->input->post('mts2'),   
+                'mts2' => $this->input->post('mts2'),
                 'uf' => $this->input->post('uf'),
                 'rol' => $this->input->post('rol'),
                 'propietario' => $this->input->post('propietario'),
@@ -63,7 +64,7 @@ class TerrenosC extends CI_Controller {
             'mts2' => $this->input->post('mts2'),
             'uf' => $this->input->post('uf'),
             'ciudad' => $this->input->post('ciudad'),
-            'mts2' => $this->input->post('mts2'),   
+            'mts2' => $this->input->post('mts2'),
             'uf' => $this->input->post('uf'),
             'letrero' => $this->input->post('letrero'),
             'rol' => $this->input->post('rol'),
@@ -89,4 +90,14 @@ class TerrenosC extends CI_Controller {
 
     }
 
-    }
+
+    public function template($id_terreno){
+
+
+
+      $data['ter'] = $this->TerrenosM->get_by_id($id_terreno);
+
+
+      echo json_encode($data);
+  }
+}

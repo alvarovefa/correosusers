@@ -11,10 +11,10 @@
     <script src="<?php echo base_url('assets/js/login.js')?>"></script>
   </head>
   <body>
-    <?php 
+    <?php
     $tipo = $this->session->userdata('tipo');
       if ( $tipo == "1") {
-        $this->load->view('navbar'); 
+        $this->load->view('navbar');
       }else{
         $this->load->view('usernavbar');
       }
@@ -22,7 +22,7 @@
 <br />
 <br />
 <br />
-                
+
   <div class="container">
     <div class="container">
       <button class="btn btn-success" onclick="add_terreno()"><i class="glyphicon glyphicon-plus"></i> Agregar Terreno </button>
@@ -31,13 +31,14 @@
     <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
+          <th>Enviar</th>
           <th>ID</th>
           <th>Código</th>
           <th>Inmueble</th>
           <th>Tipo</th>
           <th>Dirección</th>
           <th>Región</th>
-          <th>Ciudad</th>
+          <th>Comuna</th>
           <th>Mts2/miles</th>
           <th>UF/Mts2</th>
           <th>Valor/miles</th>
@@ -63,19 +64,20 @@ if ( ini_get('allow_url_fopen') ) {
     $json = curl_exec($curl);
     curl_close($curl);
 }
- 
+
 $dailyIndicators = json_decode($json);
 $uf = $dailyIndicators->uf->valor;
 echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
 ?>
         <?php foreach($regs as $reg){?>
              <tr>
-                  
+
                   <?php $metros = $reg->mts2/1000; ?>
                   <?php $fomento = number_format($reg->uf,1); ?>
                   <? $valortotal = (($reg->uf * $uf) * $reg->mts2)/1000; ?>
                   <? $valortotalF = number_format($valortotal,0,',','.'); ?>
-                  <td><?php echo $reg->id_terreno;?></td>
+                <td><button class="btn btn-primary" value='<?php echo $reg->id_terreno; ?>' id="enviar" onclick="correo()"><i class="glyphicon glyphicon-envelope"></i></button>
+                  <td id='id_terreno'><?php echo $reg->id_terreno;?></td>
                   <td><?php echo $reg->codigo;?></td>
                   <td><?php echo $reg->inmueble;?></td>
                   <td><?php echo $reg->tipo;?></td>
@@ -91,32 +93,13 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
                   <td><?php echo $reg->observaciones;?></td>
                   <td><?php echo $reg->letrero;?></td>
                   <td>
-                    <button class="btn btn-warning" onclick="edit_terreno(<?php echo $reg->id_terreno;?>)"><i class="glyphicon glyphicon-pencil"></i></button>
-                    <button class="btn btn-danger" onclick="delete_terreno(<?php echo $reg->id_terreno;?>)"><i class="glyphicon glyphicon-remove"></i></button>
+                    <button class="id_terreno btn btn-warning" onclick="edit_terreno(<?php echo $reg->id_terreno;?>)"><i class="glyphicon glyphicon-pencil"></i></button>
+                    <button class="btn btn-danger" onclick="delete_terreno(id_terreno)"><i class="glyphicon glyphicon-remove"></i></button>
                   </td>
               </tr>
              <?php }?>
-</tbody>
+      </tbody>
 
-      <tfoot>
-        <tr>
-          <th>ID</th>
-          <th>Código</th>
-          <th>Inmueble</th>
-          <th>Tipo</th>
-          <th>Dirección</th>
-          <th>Región</th>
-          <th>Ciudad</th>
-          <th>Mts2</th>
-          <th>UF/Mts2</th>
-          <th>Valor</th>
-          <th>Rol</th>
-          <th>Propietario</th>
-          <th>Corredor</th>
-          <th>Observaciones</th>
-          <th>Letrero</th>
-        </tr>
-      </tfoot>
     </table>
 
   </div>
@@ -172,7 +155,6 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
             $('[name="corredor"]').val(data.corredor);
             $('[name="observaciones"]').val(data.observaciones);
 
-
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Editar Terreno'); // Set title to Bootstrap modal title
 
@@ -183,8 +165,6 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
         }
     });
     }
-
-
 
     function save()
     {
@@ -198,7 +178,6 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
         url = "<?php echo site_url('/TerrenosC/terreno_update')?>";
       }
 
-       // ajax adding data to database
           $.ajax({
             url : url,
             type: "POST",
@@ -206,9 +185,9 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
             dataType: "JSON",
             success: function(data)
             {
-               //if success close modal and reload ajax table
+
                $('#modal_form').modal('hide');
-              location.reload();// for reload a page
+              location.reload();
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
@@ -228,7 +207,7 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
             dataType: "JSON",
             success: function(data)
             {
-               
+
                location.reload();
             },
             error: function (jqXHR, textStatus, errorThrown)
@@ -240,13 +219,7 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
       }
     }
 /*
-    $.getJSON('http://mindicador.cl/api', function(data) {
-    var dailyIndicators = data;
-    $("<h3/>", {
-        html: dailyIndicators.uf.valor
-    }).appendTo("body");
-}).fail(function() {
-    console.log('Error al consumir la API!');
+
 });
 */
   </script>
@@ -345,7 +318,7 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
           </div>
         </form>
       </div>
-      
+
           <div class="modal-footer">
             <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Guardar</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -354,6 +327,6 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
   <!-- End Bootstrap modal -->
-  
+
   </body>
 </html>

@@ -16,17 +16,17 @@ class Cpersona extends CI_Controller {
 
 
     public function verLista(){
-        
+
         $this->load->view("redactar");
-        
+
     }
 
     public function mostrar(){
         //valor a Buscar
         $buscar = $this->input->post("buscar");
-        
+
         $data = array(
-            "clientes" => $this->Modelo_datos->buscar($buscar)          
+            "clientes" => $this->Modelo_datos->buscar($buscar)
         );
         echo json_encode($data);
     }
@@ -34,22 +34,22 @@ class Cpersona extends CI_Controller {
 
 
     function sendMail(){
-        
+
         date_default_timezone_set("America/Santiago");
-        $this->load->helper('text');    
+        $this->load->helper('text');
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = '*';
 
-            
+
         $this->load->library('upload', $config);
-            
+
         $this->load->helper('path');
 
            $config = Array(
           'protocol' => 'smtp',
           'smtp_host' => 'ssl://smtp.googlemail.com',
           'smtp_port' => 465,
-          'smtp_user' => 'correopruebas@consultoramda.cl', 
+          'smtp_user' => 'correopruebas@consultoramda.cl',
           'smtp_pass' => 'lar10279',
           'mailtype' => 'html',
           'charset' => 'iso-8859-1',
@@ -64,45 +64,46 @@ class Cpersona extends CI_Controller {
             $asunto = utf8_decode($this->input->post("asunto"));
             $id = $this->session->userdata('id');
             $firma = $this->input->post('firma');
+            $terrenoCod = $this->input->post("terreno");
 
 
             $usuario = $this->session->userdata('id');
             $fecha = date("Y-m-d H:i:s");
 
-            
+
             $archivo = $_FILES['file']['name'];
             $archivoF = str_replace(" ", "_", $archivo);
-            
+
             if (empty($_FILES['file']['name'])) {
 
             foreach ($lista as $key => $value) {
 
                 $cliente = $this->Modelo_datos->registroUsuario($value);
-
                 $alias = $this->Modelo_datos->alias($value);
                 $saludo = $alias['alias'];
                 $saludo = htmlentities($saludo, ENT_QUOTES,'UTF-8');
                 $mensaje = ascii_to_entities($mensaje);
                 //$enviar = $saludo." ".$mensaje;
-                    
+
                 $data = array(
                     'id_usuario' => $usuario,
                     'fecha' => $fecha,
-                    'id' => $cliente 
+                    'id' => $cliente,
+                    'id_terreno' => $terrenoCod
                     );
 
-                $this->Modelo_datos->historial($data);
 
+                $this->Modelo_datos->historial($data);
                 $this->email->set_newline("\r\n");
                 $this->email->from('correopruebas@consultoramda.cl');
                 $this->email->to($value);
                 $this->email->subject($asunto);
                 $this->email->message($mensaje . $firma);
 
-                
+
                 //$path = set_realpath('./uploads/');
                 //$adjunto = $path.$archivo;
-            
+
                 if($this->email->send())
                  {
 
@@ -124,26 +125,26 @@ class Cpersona extends CI_Controller {
 
             }
         }else{
-            
+
              foreach ($lista as $key => $value) {
-        
+
                         $alias = $this->Modelo_datos->alias($value);
                         $saludo = $alias['alias'];
                         $saludo = htmlentities($saludo, ENT_QUOTES,'UTF-8');
                         $mensaje = ascii_to_entities($mensaje);
                         $enviar = $saludo." ".$mensaje;
-        
+
                         $this->email->set_newline("\r\n");
                         $this->email->from('correopruebas@consultoramda.cl');
                         $this->email->to($value);
                         $this->email->subject($asunto);
                         $this->email->message($enviar);
-        
+
                         $path = set_realpath('./uploads/');
                         $adjunto = $path.$archivo;
-        
+
                         $this->email->attach($adjunto);
-                        
+
                         if($this->email->send())
                          {
                             $this->load->helper("file");
@@ -153,7 +154,7 @@ class Cpersona extends CI_Controller {
                             window.location.href='http://localhost/empresa/CategoriaC';
                             </SCRIPT>");
 
-                                          
+
                          }
                          else
                         {
@@ -161,15 +162,15 @@ class Cpersona extends CI_Controller {
                          $this->load->helper("file");
                          delete_files('./uploads/');
                         }
-        
+
                     }
-            
+
             }
 
         }
-        
+
     function upload_file() {
- 
+
         //$this->load->helper('path');
         //$path = set_realpath('./uploads/');
 
@@ -181,9 +182,9 @@ class Cpersona extends CI_Controller {
         $config['encrypt_name'] = FALSE;
         $config['max_size'] = '50000';
         $config['overwrite'] = TRUE;
-        
+
         $this->load->library('upload', $config);
- 
+
         if (isset($_FILES['file']['name'])) {
             if (0 < $_FILES['file']['error']) {
                 echo 'Error durante la carga' . $_FILES['file']['error'];
@@ -203,17 +204,4 @@ class Cpersona extends CI_Controller {
             echo 'Porfavor selecciona un archivo';
         }
     }
-
-    function image(){
-
-      $this->load->model("User_model");
-
-      $somedata = $this->User_model->getImage($this->session->userdata('id'));
-
-      $data['image'] = $somedata['image'];
-
-      $this->load->view('redactar', $data);
-    }
-
- 
-    }
+  }

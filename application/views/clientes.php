@@ -9,19 +9,12 @@
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 </head>
 <body>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-sx-3" style="width: 350px;">
 				<div>
-					<div class="col-sx-3" style="float: left; width: 66%; padding-left: 4%;">
-							<select class="form-control" name="terreno" id="terreno">
-								<option disabled selected>Seleccione Terreno</option>
-								<?php foreach ($terreno as $ter): ?>
-								<option value="<?php echo $ter->id_terreno ?>"><?php echo $ter->codigo ?></option>
-								<?php endforeach; ?>
-							</select>
-						<br>
-						</div>
+
 					<div class="col-sx-3" style="float: left; width: 66%; padding-left: 4%;">
 						<select class="form-control" name="categoria" id="categoria">
 							<option disabled selected>Seleccione Categoría</option>
@@ -33,7 +26,7 @@
 					</div>
 					<div class="panel-heading" style="padding-right: 10%">
 						<input type="text" class="form-control" name="busqueda" placeholder="Buscar por nombre o empresa" />
-						<p>	
+						<p>
 							<input type="checkbox" name="check" id="checkTodos" value="">Marcar/Desmarcar Todo
 						</p>
 						<p>
@@ -53,10 +46,11 @@
 		</div>
 	</div>
 
+
 	<script src="<?php echo base_url();?>assets/js/jquery-1.11.3.min.js"></script>
 	<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/clientes.js"></script>
-	
+
 
   </body>
 </html>

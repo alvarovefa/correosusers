@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class CategoriaC extends CI_Controller {
 
     function __construct() {
-        parent::__construct();  
+        parent::__construct();
             $this->load->helper('date');
             $this->load->model('CategoriasM');
             $this->load->model('TerrenosM');
@@ -17,7 +17,7 @@ class CategoriaC extends CI_Controller {
 
             $data['cat'] = $this->CategoriasM->lista();
             $data['terreno'] = $this->TerrenosM->listaTerrenos();
-        
+
             $this->load->view('redactar', $data);
          }
 
@@ -29,21 +29,18 @@ class CategoriaC extends CI_Controller {
 
     public function mostrarCat(){
 
-        //echo "<script> alert('hola');</script>";
-        //die();
-        //valor a Buscar
         $id = $this->input->post('categoria');
-        
+
         $data = array(
-            "cat" => $this->CategoriasM->buscar_cat($id)          
+            "cat" => $this->CategoriasM->buscar_cat($id)
         );
 
         echo json_encode($data);
     }
- 
+
     public function categorias(){
 
-        $data['categoria'] = $this->CategoriasM->lista(); 
+        $data['categoria'] = $this->CategoriasM->lista();
         $this->load->view('categoriaV', $data);
 
     }
@@ -84,5 +81,7 @@ class CategoriaC extends CI_Controller {
         $this->CategoriasM->delete_by_id($id);
         echo json_encode(array("status" => TRUE));
     }
+
+
 
     }

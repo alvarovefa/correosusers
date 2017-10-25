@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class HistorialC extends CI_Controller {
 
     function __construct() {
-        parent::__construct();  
+        parent::__construct();
             $this->load->helper('date');
             $this->load->model('HistorialM');
             if (!$this->session->userdata("login")) {
@@ -17,5 +17,5 @@ class HistorialC extends CI_Controller {
         $data['regs'] = $this->HistorialM->lista();
         $this->load->view('historialV', $data);
      }
- 
+
     }

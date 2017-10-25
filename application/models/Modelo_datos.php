@@ -47,10 +47,10 @@ class Modelo_datos extends CI_Model {
  }
 public function buscar($buscar)
 	{
-	
+
 		$this->db->like("nombre_empresa",$buscar);
 		$this->db->or_like("contacto",$buscar);
-		
+
 		$this->db->select("contacto, nombre_empresa, correo");
 			$consulta = $this->db->get("contactos");
 			return $consulta->result();
@@ -60,7 +60,7 @@ public function buscarC($buscarC)
 	{
 
 		$this->db->where("id_categoria",$buscarC);
-		
+
 		$this->db->select("contacto, nombre_empresa");
 			$consulta = $this->db->get("contactos");
 			return $consulta->result();
@@ -73,18 +73,13 @@ public function buscarContactos()
 	}
 
 public function historial($data){
-
-
 	$this->db->insert("historial", $data);
-
 }
 
 public function registroUsuario($value){
-
 	$this->db->select('id');
 	$this->db->where('correo', $value);
 	$query = $this->db->get('contactos');
-
 		if ($query->num_rows()>0) {
 			$result = $query->row();
 			return $result->id;
