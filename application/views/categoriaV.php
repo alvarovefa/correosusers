@@ -15,10 +15,10 @@
     <![endif]-->
   </head>
   <body>
-    <?php 
+    <?php
     $tipo = $this->session->userdata('tipo');
       if ( $tipo == "1") {
-        $this->load->view('navbar'); 
+        $this->load->view('navbar');
       }else{
         $this->load->view('usernavbar');
       }
@@ -26,7 +26,7 @@
 <br />
 <br />
 <br />
-                
+
   <div class="container">
     <button class="btn btn-success" onclick="add_book()"><i class="glyphicon glyphicon-plus"></i> Agregar categoría </button>
     <br />
@@ -45,7 +45,7 @@
              <tr>
                   <td><?php echo $cats->id_categoria;?></td>
                   <td><?php echo $cats->nombre;?></td>
-                  
+
                   <td>
                   <!--<button class="btn btn-warning" onclick="edit_book(<?php echo $cats->id_categoria;?>)"><i class="glyphicon glyphicon-pencil"></i></button>-->
                   <button class="btn btn-danger" onclick="delete_book(<?php echo $cats->id_categoria;?>)"><i class="glyphicon glyphicon-remove"></i></button>
@@ -161,7 +161,7 @@
             dataType: "JSON",
             success: function(data)
             {
-               
+
                location.reload();
             },
             error: function (jqXHR, textStatus, errorThrown)
@@ -172,7 +172,6 @@
 
       }
     }
-
   </script>
 
   <!-- Bootstrap modal -->
@@ -194,11 +193,11 @@
                 <input name="categoria" placeholder="Ingrese nombre de categoría" class="form-control" type="text">
               </div>
             </div>
-            
+
           </div>
         </form>
       </div>
-      
+
           <div class="modal-footer">
             <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Guardar</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

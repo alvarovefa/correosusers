@@ -72,7 +72,8 @@ class Cpersona extends CI_Controller {
 
 
             $archivo = $_FILES['file']['name'];
-            $archivoF = str_replace(" ", "_", $archivo);
+            //$archivoF = str_replace(" ", "_", $archivo);
+            $archivoF = preg_replace('[\s+]',"_", $archivo);
 
             if (empty($_FILES['file']['name'])) {
 
@@ -109,7 +110,7 @@ class Cpersona extends CI_Controller {
 
 
                     $this->load->helper("file");
-                    delete_files('./uploads/');
+                    //delete_files('./uploads/');
                     echo ("<SCRIPT LANGUAGE='JavaScript'>
                     window.alert('Correo Enviado!!')
                     window.location.href='http://localhost/empresa/CategoriaC';
@@ -141,14 +142,14 @@ class Cpersona extends CI_Controller {
                         $this->email->message($enviar);
 
                         $path = set_realpath('./uploads/');
-                        $adjunto = $path.$archivo;
+                        $adjunto = $path.$archivoF;
 
                         $this->email->attach($adjunto);
 
                         if($this->email->send())
                          {
                             $this->load->helper("file");
-                            delete_files('./uploads/');
+                            //delete_files('./uploads/');
                             echo ("<SCRIPT LANGUAGE='JavaScript'>
                             window.alert('Correo Enviado!!')
                             window.location.href='http://localhost/empresa/CategoriaC';

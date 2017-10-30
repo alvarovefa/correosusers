@@ -75,9 +75,7 @@
                       </div>
                       <div class="col-md-9" style="float: right;">
                         <label style="font-size: 15px; margin-left: 0%;">Mensaje</label><br />
-                        <textarea id="text"></textarea>
                           <textarea id="editor" name="mensaje">
-
                             <? $this->load->view('firma'); ?>
                           </textarea>
                       </div>
@@ -110,6 +108,15 @@
 <div style="margin-top: -600px; float: left;">
         <?php $this->load->view("clientes"); ?>
 </div>
+<script>
+  $(document).ready(function (e){
+    $('#file').on('change', function () {
+      var cadena = $('#file').val();
+      cadena= cadena.replace(/\s/g,"_");
+      document.getElementById('file').innerHTML = cadena;
+    }
+  }
+</script>
 <script>
 $(document).on("ready", main);
 function main(){
