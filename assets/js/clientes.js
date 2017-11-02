@@ -7,7 +7,7 @@ $("#checkTodos").change(function () {
 
 function main(){
 	mostrarDatos("",1);
-	mostrarDatos2("",1);
+  mostrarDatos2("",1);
 
 	$("input[name=busqueda]").keyup(function(){
 		valorBuscar = $(this).val();
@@ -17,7 +17,7 @@ function main(){
 
 $("select[name=categoria]").change(function(){
 		valorBuscar = $(this).val();
-		mostrarDatos2(valorBuscar);
+		mostrarDatos2(valorBuscar,1);
 	});
 
 }
@@ -29,16 +29,17 @@ function mostrarDatos2(valorBuscar){
 		type: "POST",
 		data: {categoria: valorBuscar},
 		dataType:"json",
+
 		success:function(response){
+      if(typeof response.cat == "object" ){
+        filas = "";
+        $.each(response.cat,function(key,item){
+          filas+="<tr><td><input type='checkbox' id='check' value="+item.correo+"></td><td>"+item.contacto+"<br />"+item.correo+"<br />"+item.nombre_empresa+"</td></tr>";
+        });
+        $("#tbclientes tbody").html(filas);
 
-
-			filas = "";
-			$.each(response.cat,function(key,item){
-				filas+="<tr><td><input type='checkbox' id='check' value="+item.correo+"></td><td>"+item.contacto+"<br />"+item.correo+"<br />"+item.nombre_empresa+"</td></tr>";
-			});
-			$("#tbclientes tbody").html(filas);
-
-		}
+      }
+      }
 	});
 
 }
@@ -51,8 +52,6 @@ function mostrarDatos(valorBuscar){
 		data: {buscar: valorBuscar, categoria: valorBuscar},
 		dataType:"json",
 		success:function(response){
-
-
 			filas = "";
 			$.each(response.clientes,function(key,item){
 				filas+="<tr><td><input type='checkbox' id='check' value="+item.correo+"></td><td>"+item.contacto+"<br />"+item.correo+"<br />"+item.nombre_empresa+"</td></tr>";

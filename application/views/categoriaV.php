@@ -23,9 +23,9 @@
         $this->load->view('usernavbar');
       }
       ?>
-<br />
-<br />
-<br />
+  <br />
+  <br />
+  <br />
 
   <div class="container">
     <button class="btn btn-success" onclick="add_book()"><i class="glyphicon glyphicon-plus"></i> Agregar categoría </button>
@@ -47,7 +47,7 @@
                   <td><?php echo $cats->nombre;?></td>
 
                   <td>
-                  <!--<button class="btn btn-warning" onclick="edit_book(<?php echo $cats->id_categoria;?>)"><i class="glyphicon glyphicon-pencil"></i></button>-->
+                  <button class="btn btn-warning" onclick="edit_book(<?php echo $cats->id_categoria;?>)"><i class="glyphicon glyphicon-pencil"></i></button>
                   <button class="btn btn-danger" onclick="delete_book(<?php echo $cats->id_categoria;?>)"><i class="glyphicon glyphicon-remove"></i></button>
 
 
@@ -139,7 +139,7 @@
             success: function(data)
             {
                //if success close modal and reload ajax table
-               $('#modal_form').modal('hide');
+              $('#modal_form').modal('hide');
               location.reload();// for reload a page
             },
             error: function (jqXHR, textStatus, errorThrown)
@@ -190,7 +190,7 @@
             <div class="form-group">
               <label class="control-label col-md-3">Categoría</label>
               <div class="col-md-9">
-                <input name="categoria" placeholder="Ingrese nombre de categoría" class="form-control" type="text">
+                <input id="categoria" name="categoria" placeholder="Ingrese nombre de categoría" class="form-control" type="text">
               </div>
             </div>
 

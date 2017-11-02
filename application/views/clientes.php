@@ -12,7 +12,7 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-sx-3" style="width: 350px;">
+			<div class="col-sx-3" style="width: 300px;">
 				<div>
 
 					<div class="col-sx-3" style="float: left; width: 66%; padding-left: 4%;">
@@ -48,7 +48,6 @@
 
 
 	<script src="<?php echo base_url();?>assets/js/jquery-1.11.3.min.js"></script>
-	<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/clientes.js"></script>
 
 

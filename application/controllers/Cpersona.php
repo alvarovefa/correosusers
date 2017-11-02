@@ -110,7 +110,7 @@ class Cpersona extends CI_Controller {
 
 
                     $this->load->helper("file");
-                    //delete_files('./uploads/');
+                    delete_files('./uploads/');
                     echo ("<SCRIPT LANGUAGE='JavaScript'>
                     window.alert('Correo Enviado!!')
                     window.location.href='http://localhost/empresa/CategoriaC';
@@ -128,7 +128,7 @@ class Cpersona extends CI_Controller {
         }else{
 
              foreach ($lista as $key => $value) {
-
+                        $cliente = $this->Modelo_datos->registroUsuario($value);
                         $alias = $this->Modelo_datos->alias($value);
                         $saludo = $alias['alias'];
                         $saludo = htmlentities($saludo, ENT_QUOTES,'UTF-8');
@@ -141,6 +141,16 @@ class Cpersona extends CI_Controller {
                         $this->email->subject($asunto);
                         $this->email->message($enviar);
 
+                        $data = array(
+                            'id_usuario' => $usuario,
+                            'fecha' => $fecha,
+                            'id' => $cliente,
+                            'id_terreno' => $terrenoCod
+                            );
+
+
+                        $this->Modelo_datos->historial($data);
+
                         $path = set_realpath('./uploads/');
                         $adjunto = $path.$archivoF;
 
@@ -149,7 +159,7 @@ class Cpersona extends CI_Controller {
                         if($this->email->send())
                          {
                             $this->load->helper("file");
-                            //delete_files('./uploads/');
+                            delete_files('./uploads/');
                             echo ("<SCRIPT LANGUAGE='JavaScript'>
                             window.alert('Correo Enviado!!')
                             window.location.href='http://localhost/empresa/CategoriaC';

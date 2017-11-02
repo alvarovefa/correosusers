@@ -31,7 +31,7 @@
     <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th>Enviar</th>
+
           <th>ID</th>
           <th>Código</th>
           <th>Inmueble</th>
@@ -76,7 +76,7 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
                   <?php $fomento = number_format($reg->uf,1); ?>
                   <? $valortotal = (($reg->uf * $uf) * $reg->mts2)/1000; ?>
                   <? $valortotalF = number_format($valortotal,0,',','.'); ?>
-                <td><button class="btn btn-primary" value='<?php echo $reg->id_terreno; ?>' id="enviar" onclick="correo()"><i class="glyphicon glyphicon-envelope"></i></button>
+
                   <td id='id_terreno'><?php echo $reg->id_terreno;?></td>
                   <td><?php echo $reg->codigo;?></td>
                   <td><?php echo $reg->inmueble;?></td>
@@ -186,7 +186,7 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
             success: function(data)
             {
 
-               $('#modal_form').modal('hide');
+              $('#modal_form').modal('hide');
               location.reload();
             },
             error: function (jqXHR, textStatus, errorThrown)
@@ -268,9 +268,9 @@ echo 'Valor actual de la UF <input type="text" id="vuf" value = '.$uf.'>';
             </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-md-3">Ciudad</label>
+              <label class="control-label col-md-3">Comuna</label>
               <div class="col-md-9">
-                <input name="ciudad" placeholder="Ciudad" class="form-control" type="text">
+                <input name="ciudad" placeholder="Comuna" class="form-control" type="text">
               </div>
             </div>
             <div class="form-group">

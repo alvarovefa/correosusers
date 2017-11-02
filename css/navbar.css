@@ -1,0 +1,72 @@
+/**********************************
+Responsive navbar-brand image CSS
+- Remove navbar-brand padding for firefox bug workaround
+- add 100% height and width auto ... similar to how bootstrap img-responsive class works
+***********************************/
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+
+
+
+
+
+
+
+/*************************
+EXAMPLES 2-7 BELOW 
+**************************/
+
+/* EXAMPLE 2 (larger logo) - simply adjust top bottom padding to make logo larger */
+
+
+
+
+/* EXAMPLE 3
+
+line height is 20px by default so add 30px top and bottom to equal the new .navbar-brand 80px height  */
+
+.navega .navbar-brand {
+  height: 112px;
+}
+
+.navega .nav >li >a {
+  padding-top: 60px;
+  
+}
+.navega .navbar-toggle {
+  padding: 10px;
+  color: black;
+  /*margin: 25px 15px 25px 0;*/
+}
+
+/* CSS Transform Align Navbar Brand Text ... This could also be achieved with table / table-cells */
+.navbar-alignit .navbar-header {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  height: 300px;
+}
+.navbar-alignit .navbar-brand {
+	top: 10%;
+	display: block;
+	position: relative;
+	height: auto;
+	transform: translate(-50%,-50%);
+
+}
+
+
+
+
+
+.navbar-nav>li>.dropdown-menu {
+	z-index: 9999;
+}
+

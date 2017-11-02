@@ -95,7 +95,7 @@
                 <div class="modal fade" id="loader" role="dialog">
                   <div class="modal-dialog">
 
-                      <img style="margin-top: 10%; margin-left: 50%; margin-right: 50%;" src="../assets/images/loading.gif">
+                      <img style="margin-top: 10%; margin-left: 50%; margin-right: 50%;" src="./assets/images/loading.gif">
 
                   </div>
                 </div>
@@ -105,7 +105,7 @@
     </div>
 </div>
 
-<div style="margin-top: -600px; float: left;">
+<div style="margin-top: -750px; margin-left: 10px; float: left;">
         <?php $this->load->view("clientes"); ?>
 </div>
 <script>
@@ -114,8 +114,8 @@
       var cadena = $('#file').val();
       cadena= cadena.replace(/\s/g,"_");
       document.getElementById('file').innerHTML = cadena;
-    }
-  }
+    });
+  });
 </script>
 <script>
 $(document).on("ready", main);
@@ -185,7 +185,7 @@ function datosTerreno(dato){
 
       form_data.append('file', file_data);
       $.ajax({
-        url: 'http://mail.mayordomus.cl/Cpersona/upload_file',
+        url: 'http://localhost/empresa/Cpersona/upload_file',
         dataType: 'text',
         cache: false,
         contentType: false,

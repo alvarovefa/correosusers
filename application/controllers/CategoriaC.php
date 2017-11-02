@@ -8,6 +8,7 @@ class CategoriaC extends CI_Controller {
             $this->load->helper('date');
             $this->load->model('CategoriasM');
             $this->load->model('TerrenosM');
+            $this->load->library('unit_test');
             if (!$this->session->userdata("login")) {
             redirect(base_url());
         }
@@ -59,12 +60,11 @@ class CategoriaC extends CI_Controller {
         {
             $data = $this->CategoriasM->get_by_id($id_categoria);
 
-
             echo json_encode($data);
         }
 
         public function book_update()
-    {
+        {
 
         $data = array(
 
@@ -72,9 +72,9 @@ class CategoriaC extends CI_Controller {
 
             );
 
-        $this->CategoriasM->book_update(array('id_categoria' => $this->input->post('id_categoria')), $data);
+        $this->CategoriasM->book_update(array('id_categoria' => $this->input->post('id')), $data);
         echo json_encode(array("status" => TRUE));
-    }
+      }
 
     public function book_delete($id)
     {

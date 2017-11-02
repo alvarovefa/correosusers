@@ -1,0 +1,242 @@
+
+
+body {
+	width:100%;
+		background: url("imagenes/vajilla5.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+
+	font-family: 'Open Sans', sans-serif;
+	font-size: 11px;
+
+}
+
+#bloque1, #bloque2, #bloque3, #bloque4, #bloque5, #bloque6, #nuestra, #contacto section{
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 1100px;
+	margin: 0 auto;
+	max-width: 1440px;
+	max-height: 600px;
+	overflow: hidden;
+	padding: 0;
+	position: relative;
+	width: 100% !important;
+	}
+
+#bloque1 {
+	background-image: url("../imagenes/vajilla2.jpg");
+}
+
+#bloque2 {
+	background-color: white;
+}
+
+#bloque4 {
+	background-image: url("../imagenes/fotofondo.jpg");
+}
+
+#bloque5 {
+	background-color: white;
+	height: 250px;
+}
+#bloque6{
+	background-color: white;
+}
+#bloque7{
+	background-color: white;
+}
+#nuestra{
+	background-color: white;
+}
+
+.icono {
+	max-height: 70px;
+
+}
+
+#servicios{
+	background-color: #6E6E6E;
+	height: 700px;
+	width: 350px;
+	float: left;
+	margin-right: 90px;
+	padding: 50px;
+	text-align: center;
+}
+
+#carpa{
+	float: right;
+	max-width: 800px;
+	max-height: 800px;
+	margin-right: 30px;
+	height: 70px;
+}
+#carpa2{
+	float: right;
+	max-width: 600px;
+	margin-right: 30px;
+	height: auto;
+}
+#loza{
+	float: left;
+	max-width: 800px;
+	max-height: 800px;
+	margin-left: 70px;
+	height: 70px;
+}
+#vajilla{
+	background-color: #6E6E6E;
+	height: 550px;
+	width: 350px;
+	float: right;
+	margin-right: 30px;
+	padding: 50px;
+	text-align: center;
+}
+#banquete{
+	background-color: #6E6E6E;
+	height: 550px;
+	width: 350px;
+	float: right;
+	margin-right: 30px;
+	padding: 50px;
+	text-align: center;
+
+}
+
+
+#galeria{
+	background-color: #6E6E6E;
+	height: 550px;
+	width: 350px;
+	float: right;
+	margin-right: 30px;
+	padding: 50px;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+
+button{
+	background-color: #6E6E6E;
+	width: 200px;
+	height: 50px;
+}
+
+button:hover {
+ background-color: #FFFFFF;
+ color: #6E6E6E;
+ transition-duration: 0.1s;
+}
+#contacto{
+margin-top: 10px;
+}
+
+#nosotros{
+	background-color: #6E6E6E;
+	height: 450px;
+	width: 600px;
+	float: right;
+	margin-right: 30px;
+	padding: 10px;
+	text-align: center;
+	font-size: 20px;
+}
+li{
+	font-size: 17px;
+}
+
+#sub{
+	margin-left: 100px;
+	font-size: 16px;
+	margin-bottom: 1px;
+
+}
+#head{
+	height: 200px;
+}
+
+#fotos{
+	height: 500px;
+	margin: auto;
+}
+@media screen and (max-width: 800px){
+		#vajilla{
+			margin-bottom: -40px;
+			width: 80%;
+			display:table-cell;
+			vertical-align:middle;
+			}
+		#nosotros{
+
+		margin-top: -80px;
+		width: 80%;
+		display:table-cell;
+		vertical-align:middle;
+		font-size: 14px;
+		
+
+		}
+
+		#losotros{
+			
+			font-size: 28px;
+			color: #ffffff;
+		}
+
+		#empresa{
+			margin-top: 0px;
+			margin-bottom: 60px;
+			padding-bottom: 40px;
+		}	
+		#icononos{
+			margin-top: 20px;
+		}
+
+		#banquete{
+		margin-top: 30px;
+		width: 80%;
+		display:table-cell;
+		vertical-align:middle;
+		}
+		#servicio{
+			display: none;
+		}
+		#servi{
+			color: white;
+		}
+		#we {
+			display: none;
+		}
+		#galeria{
+			width: 80%;
+			display:table-cell;
+			vertical-align:middle;
+		}
+		#carpa {
+			display: none;
+		}
+		#loza {
+			display: none;
+		}
+		#bloque5{
+			height: 600px;
+		}
+		.footer{
+			height: 600px;
+		}
+		#bloque2{
+			background-image: url("../imagenes/fotocarpas.jpg");
+		}
+		#bloque3{
+			background-image: url("../imagenes/banquete.jpg");
+		}
+		#bloque6{
+			background-image: url("../imagenes/vajilla5.jpg");
+		}
+		#nuestra{
+			background-image: url("../imagenes/nuestra.jpg");
+		}
+
+
+}
